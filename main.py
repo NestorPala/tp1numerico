@@ -1,6 +1,7 @@
 import numpy as np
-from numpy import cos, power, sin, add, ndarray, subtract
+from numpy import cos, power, sin, add, subtract
 from numpy.linalg import norm
+
 
 PI = np.pi
 UPPER = 0
@@ -41,22 +42,43 @@ def initial_seed(n: int) -> list[int]:
     return [0 for i in range(n)]
 
 
-def spectral_radius_gs(n: int) -> float:
-    return power(cos(PI / n), 2)
-
-
-def spectral_radius_sor(n: int) -> float:
-    return best_w_value(n) - 1
-
-
-def best_w_value(n: int) -> float:
-    return 2 / (1 + sin(PI / n))
+def sor(
+        z: int,
+        n: int,
+        x1: list[float],
+        x0: list[float],
+        w: float,
+        boundaries: list[float]
+) -> float:
+    b = boundary_values_sum(z, n, boundaries)
+    i = internal_values_sum(z, n, x1, x0)
+    adjacent_sum = b + i
+    z0_value = x0[z - 1]
+    z1_value = (adjacent_sum / 4 - z0_value) * w + z0_value
+    return z1_value
 
 
 def residual(x1: list[float], x0: list[float]) -> float:
     arr1 = np.array(x1)
     arr0 = np.array(x0)
     return norm(add(arr1, arr0), 2) / norm(arr0, 2)
+
+
+# cota
+def error_bound(x1: list[float], x0: list[float]) -> float:
+    arr1 = np.array(x1)
+    arr0 = np.array(x0)
+    return np.abs(subtract(arr1, arr0))
+
+
+# frontera
+def boundary_values_sum(
+        z: int,
+        n: int,
+        boundaries: list[float]
+) -> float:
+    i, j = matrix_index_from(z, n)
+    return b_value_from_matrix_index(i, j, n, boundaries)
 
 
 # calcular_valor_frontera
@@ -91,22 +113,6 @@ def b_value_from_matrix_index(
     return 0.0
 
 
-# frontera
-def boundary_values_sum(
-        z: int,
-        n: int,
-        boundaries: list[float]
-) -> float:
-    i, j = matrix_index_from(z, n)
-    return b_value_from_matrix_index(i, j, n, boundaries)
-
-
-def matrix_index_from(z: int, n: int) -> tuple[int, int]:
-    i = z // (n - 1)
-    j = (z % (n - 1)) - 1
-    return j, i
-
-
 # no_frontera
 def internal_values_sum(
         z: int,
@@ -121,29 +127,6 @@ def internal_values_sum(
         else:
             total += x0[adj]  # last iteration
     return total
-
-
-# cota
-def error_bound(x1: list[float], x0: list[float]) -> float:
-    arr1 = np.array(x1)
-    arr0 = np.array(x0)
-    return np.abs(subtract(arr1, arr0))
-
-
-def sor(
-        z: int,
-        n: int,
-        x1: list[float],
-        x0: list[float],
-        w: float,
-        boundaries: list[float]
-) -> float:
-    b = boundary_values_sum(z, n, boundaries)
-    i = internal_values_sum(z, n, x1, x0)
-    adjacent_sum = b + i
-    z0_value = x0[z - 1]
-    z1_value = (adjacent_sum / 4 - z0_value) * w + z0_value
-    return z1_value
 
 
 # adjacents
@@ -170,5 +153,23 @@ def internal_adjacents(z: int, n: int) -> list[int]:
     return adj
 
 
+def matrix_index_from(z: int, n: int) -> tuple[int, int]:
+    i = z // (n - 1)
+    j = (z % (n - 1)) - 1
+    return j, i
+
+
 def z_index_from(i: int, j: int, n: int) -> int:
     return (n - 1) * j + (i + 1)
+
+
+def spectral_radius_gs(n: int) -> float:
+    return power(cos(PI / n), 2)
+
+
+def spectral_radius_sor(n: int) -> float:
+    return best_w_value(n) - 1
+
+
+def best_w_value(n: int) -> float:
+    return 2 / (1 + sin(PI / n))
