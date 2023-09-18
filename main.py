@@ -22,19 +22,23 @@ def solve_discrete_laplace_sor(
     x1 = list()
     # X(k)
     x0 = seed if (seed is not None) else initial_seed(n)
-    k = 0
-    r = r_tol
+    if w == -1:
+        w = best_w_value(n)
     delta_x = []
+    k = 1
+    r = r_tol
     max_z = power(n - 1, 2)
     while r >= r_tol:
-        x1 = []
         for z in range(1, max_z + 1):  # internal nodes
             new_z_node_value = sor(z, n, x1, x0, w, boundaries)
             x1.append(new_z_node_value)
         r = residual(x1, x0)
-        if r < r_tol:
+        if r >= r_tol:
+            k += 1
+            x0 = x1.copy()
+            x1 = []
+        else:
             delta_x = error_bound(x1, x0)
-        x0 = x1.copy()
     return x1, delta_x, r, k
 
 
