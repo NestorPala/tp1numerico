@@ -2,7 +2,6 @@ import numpy as np
 from numpy import cos, power, sin, add, ndarray, subtract
 from numpy.linalg import norm
 
-
 PI = np.pi
 UPPER = 0
 LOWER = 1
@@ -18,21 +17,28 @@ def solve_discrete_laplace_sor(
         w: float = -1,
         seed: list[float] = None
 ) -> tuple[list[float], list[float], float, int]:
+    # X(k + 1)
     x1 = list()
-    x0 = seed if (seed is not None) else [0 for i in range(n)]
+    # X(k)
+    x0 = seed if (seed is not None) else initial_seed(n)
     k = 0
     r = r_tol
     delta_x = []
     max_z = power(n - 1, 2)
     while r >= r_tol:
         x1 = []
-        for z in range(1, max_z + 1):
-            tz1 = sor(z, n, x1, x0, w, boundaries)
-            x1.append(tz1)
-        delta_x = error_bound(x1, x0)
+        for z in range(1, max_z + 1):  # internal nodes
+            new_z_node_value = sor(z, n, x1, x0, w, boundaries)
+            x1.append(new_z_node_value)
         r = residual(x1, x0)
+        if r < r_tol:
+            delta_x = error_bound(x1, x0)
         x0 = x1.copy()
     return x1, delta_x, r, k
+
+
+def initial_seed(n: int) -> list[int]:
+    return [0 for i in range(n)]
 
 
 def spectral_radius_gs(n: int) -> float:
@@ -50,11 +56,7 @@ def best_w_value(n: int) -> float:
 def residual(x1: list[float], x0: list[float]) -> float:
     arr1 = np.array(x1)
     arr0 = np.array(x0)
-    return _2_norm(add(arr1, arr0)) / _2_norm(arr0)
-
-
-def _2_norm(x: ndarray) -> float:
-    return norm(x, 2)
+    return norm(add(arr1, arr0), 2) / norm(arr0, 2)
 
 
 # calcular_valor_frontera
@@ -149,20 +151,20 @@ def internal_adjacents(z: int, n: int) -> list[int]:
     adj = []
     i, j = matrix_index_from(z, n)
 
-    if j-1 >= 0:
-        z_adj = z_index_from(i, j-1, n)
+    if j - 1 >= 0:
+        z_adj = z_index_from(i, j - 1, n)
         adj.append(z_adj)
 
-    if i-1 >= 0:
-        z_adj = z_index_from(i-1, j, n)
+    if i - 1 >= 0:
+        z_adj = z_index_from(i - 1, j, n)
         adj.append(z_adj)
 
-    if i+1 <= n-2:
-        z_adj = z_index_from(i+1, j, n)
+    if i + 1 <= n - 2:
+        z_adj = z_index_from(i + 1, j, n)
         adj.append(z_adj)
 
-    if j+1 <= n-2:
-        z_adj = z_index_from(i, j+1, n)
+    if j + 1 <= n - 2:
+        z_adj = z_index_from(i, j + 1, n)
         adj.append(z_adj)
 
     return adj
