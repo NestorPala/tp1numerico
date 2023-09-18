@@ -2,11 +2,13 @@ import numpy as np
 from numpy import cos, power, sin, add, ndarray, subtract
 from numpy.linalg import norm
 
+
 PI = np.pi
 UPPER = 0
 LOWER = 1
 LEFT = 2
 RIGHT = 3
+
 
 # boundaries: [UPPER, LOWER, LEFT, RIGHT]
 def solve_discrete_laplace_sor(
@@ -15,8 +17,22 @@ def solve_discrete_laplace_sor(
         boundaries: list[int],
         w: float = -1,
         seed: list[float] = None
-) -> set[list[float], list[float], float, int]:
-    pass
+) -> tuple[list[float], list[float], float, int]:
+    x1 = list()
+    x0 = seed if (seed is not None) else [0 for i in range(n)]
+    k = 0
+    r = r_tol
+    delta_x = []
+    max_z = power(n - 1, 2)
+    while r >= r_tol:
+        x1 = []
+        for z in range(1, max_z + 1):
+            tz1 = sor(z, n, x1, x0, w, boundaries)
+            x1.append(tz1)
+        delta_x = error_bound(x1, x0)
+        r = residual(x1, x0)
+        x0 = x1.copy()
+    return x1, delta_x, r, k
 
 
 def spectral_radius_gs(n: int) -> float:
