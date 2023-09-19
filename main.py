@@ -43,7 +43,7 @@ def solve_discrete_laplace_sor(
 
 
 def initial_seed(n: int) -> list[int]:
-    return [0 for i in range(n)]
+    return [0 for i in range(power(n - 1, 2))]
 
 
 def sor(
