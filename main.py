@@ -97,23 +97,31 @@ def b_value_from_matrix_index(
     TW = boundaries[LEFT]
     TE = boundaries[RIGHT]
 
-    if (i == 0) and (j == 0):
+    # only one node
+    if n == 2:
+        return TN + TS + TW + TE
+
+    # node is corner
+    elif (i == 0) and (j == 0):
         return TS + TW
-    elif (i == n - 2) and (j == 0):
-        return TN + TW
     elif (i == 0) and (j == n - 2):
         return TS + TE
+    elif (i == n - 2) and (j == 0):
+        return TN + TW
     elif (i == n - 2) and (j == n - 2):
         return TN + TE
+
+    # node is border
     elif (i == 0) and (1 <= j <= n - 3):
         return TS
     elif (1 <= i <= n - 3) and (j == 0):
         return TN
     elif (1 <= i <= n - 3) and (j == n - 2):
         return TW
-    elif (1 <= i <= n - 3) and (1 <= j <= n - 3):
+    elif (i == n - 2) and (1 <= j <= n - 3):
         return TE
 
+    # node is center
     return 0.0
 
 
