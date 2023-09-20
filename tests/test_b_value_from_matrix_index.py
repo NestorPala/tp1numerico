@@ -2,7 +2,7 @@ import unittest
 from main import b_value_from_matrix_index
 
 
-class MyTestCase(unittest.TestCase):
+class BValueFromMatrixIndexTestCase(unittest.TestCase):
 
     def test_n_equal_to_4(self):
         n = 4

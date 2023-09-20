@@ -2,7 +2,7 @@ import unittest
 from main import internal_adjacents
 
 
-class InternalAdjacentsFromTestCase(unittest.TestCase):
+class InternalAdjacentsTestCase(unittest.TestCase):
 
     """
     [
