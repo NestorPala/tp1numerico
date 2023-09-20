@@ -158,8 +158,8 @@ def internal_adjacents(z: int, n: int) -> list[int]:
 
 
 def matrix_index_from(z: int, n: int) -> tuple[int, int]:
-    i = z // (n - 1)       # esta muy probablemente no va
-    j = (z % (n - 1)) - 1  # formula:  j = z - (n - 1) * i - 1
+    i = (z - 1) // (n - 1)
+    j = z - (n - 1) * i - 1
     return j, i
 
 
