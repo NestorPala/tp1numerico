@@ -56,6 +56,19 @@ class NodeSORTestCase(unittest.TestCase):
         boundaries[RIGHT] = 20.0
         self.assertEqual(16.375, node_sor(z, n, x1, x0, w, boundaries))
 
+    def test_n_equal_to_2(self):
+        z = 1
+        n = 2
+        x1 = []
+        x0 = [0]
+        w = 1.5
+        boundaries = [-1, -1, -1, -1]
+        boundaries[UPPER] = 15.0
+        boundaries[LOWER] = 16.0
+        boundaries[LEFT] = 17.0
+        boundaries[RIGHT] = 18.0
+        self.assertEqual(24.75, node_sor(z, n, x1, x0, w, boundaries))
+
 
 if __name__ == '__main__':
     unittest.main()
