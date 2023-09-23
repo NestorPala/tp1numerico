@@ -64,7 +64,7 @@ def node_sor(
 def residual(x1: list[float], x0: list[float]) -> float:
     arr1 = array(x1)
     arr0 = array(x0)
-    return norm(subtract(arr1, arr0), 2) / norm(arr0, 2)
+    return norm(subtract(arr1, arr0), 2) / norm(arr1, 2)
 
 
 # cota
