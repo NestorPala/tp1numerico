@@ -1,4 +1,4 @@
-from main import UPPER, LOWER, LEFT, RIGHT, solve_discrete_laplace_sor
+from main import UPPER, LOWER, LEFT, RIGHT, solve_discrete_laplace_sor, best_w_value
 from tests.test_solve_discrete_laplace_sor import X_VALUE, X_ERROR_BOUND, RESIDUAL, ITERATIONS
 
 
@@ -10,7 +10,7 @@ boundaries[UPPER] = 1.0
 boundaries[LOWER] = 1.0
 boundaries[LEFT] = 1.0
 boundaries[RIGHT] = 1.0
-w = 1.95
+w = best_w_value(n)
 
 data = solve_discrete_laplace_sor(n, r_tol, boundaries, w)
 
@@ -23,3 +23,4 @@ print(x_value)
 print(x_error_bound)
 print(residual)
 print(iterations)
+print("w: " + str(w))
