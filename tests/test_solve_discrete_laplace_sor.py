@@ -39,7 +39,7 @@ class SolveDiscreteLaplaceSORTestCase(unittest.TestCase):
         self.assertEqual(0.0007298476528922345, residual)
         self.assertEqual(14, iterations)
 
-    # d)
+    # c) (N = 4), d)
     # TODO: do for w values: [1.00, 1.05, 1.10, ..., 1.95]
     def test_n_equals_32(self):
         n = 32
@@ -67,7 +67,6 @@ class SolveDiscreteLaplaceSORTestCase(unittest.TestCase):
         self.assertEqual(TEST_2_X_ERROR_BOUND, x_error_bound)
         self.assertEqual(0.009862712316656284, residual)
         self.assertEqual(28, iterations)
-
 
 
 if __name__ == '__main__':
