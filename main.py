@@ -1,4 +1,4 @@
-from numpy import cos, power, sin, add, subtract, array, pi
+from numpy import cos, power, sin, subtract, array, pi
 from numpy.linalg import norm
 
 
@@ -64,7 +64,7 @@ def sor(
 def residual(x1: list[float], x0: list[float]) -> float:
     arr1 = array(x1)
     arr0 = array(x0)
-    return norm(add(arr1, arr0), 2) / norm(arr0, 2)
+    return norm(subtract(arr1, arr0), 2) / norm(arr0, 2)
 
 
 # cota
