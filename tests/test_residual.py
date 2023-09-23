@@ -1,8 +1,4 @@
 import unittest
-
-from numpy import subtract, array
-from numpy.linalg import norm
-
 from main import residual
 
 
