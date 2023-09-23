@@ -4,8 +4,8 @@ from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D import TEST_2_X_VAL
 from tests.results.test_solve_discrete_laplace_sor.PARTE_2 import TEST_1_X_VALUE, TEST_1_X_ERROR_BOUND
 
 
-X = 0
-X_UPPER_BOUND = 1
+X_VALUE = 0
+X_ERROR_BOUND = 1
 RESIDUAL = 2
 ITERATIONS = 3
 
@@ -29,8 +29,8 @@ class SolveDiscreteLaplaceSORTestCase(unittest.TestCase):
         # w = 1.4464626921716894
         data = solve_discrete_laplace_sor(n, r_tol, boundaries)
 
-        x_value = data[X]
-        x_error_bound = data[X_UPPER_BOUND]
+        x_value = data[X_VALUE]
+        x_error_bound = data[X_ERROR_BOUND]
         residual = data[RESIDUAL]
         iterations = data[ITERATIONS]
 
@@ -55,8 +55,8 @@ class SolveDiscreteLaplaceSORTestCase(unittest.TestCase):
         # w = 1.4464626921716894
         data = solve_discrete_laplace_sor(n, r_tol, boundaries)
 
-        x_value = data[X]
-        x_error_bound = data[X_UPPER_BOUND]
+        x_value = data[X_VALUE]
+        x_error_bound = data[X_ERROR_BOUND]
         residual = data[RESIDUAL]
         iterations = data[ITERATIONS]
 
