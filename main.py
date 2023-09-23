@@ -29,7 +29,7 @@ def solve_discrete_laplace_sor(
     max_z = power(n - 1, 2)
     while r >= r_tol:
         for z in range(1, max_z + 1):  # internal nodes
-            new_z_node_value = sor(z, n, x1, x0, w, boundaries)
+            new_z_node_value = node_sor(z, n, x1, x0, w, boundaries)
             x1.append(new_z_node_value)
         r = residual(x1, x0)
         if r >= r_tol:
@@ -45,7 +45,7 @@ def initial_seed(n: int) -> list[int]:
     return [0 for i in range(power(n - 1, 2))]
 
 
-def sor(
+def node_sor(
         z: int,
         n: int,
         x1: list[float],
@@ -113,11 +113,11 @@ def b_value_from_matrix_index(
     # node is border
     elif (i == 0) and (1 <= j <= n - 3):
         return TS
-    elif (1 <= i <= n - 3) and (j == 0):
-        return TN
-    elif (1 <= i <= n - 3) and (j == n - 2):
-        return TW
     elif (i == n - 2) and (1 <= j <= n - 3):
+        return TN
+    elif (j == 0) and (1 <= i <= n - 3):
+        return TW
+    elif (j == n - 2) and (1 <= i <= n - 3):
         return TE
 
     # node is center
