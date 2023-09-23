@@ -2,7 +2,7 @@ from main import UPPER, LOWER, LEFT, RIGHT, solve_discrete_laplace_sor, best_w_v
 from tests.test_solve_discrete_laplace_sor import X_VALUE, X_ERROR_BOUND, RESIDUAL, ITERATIONS
 
 
-n = 4
+n = 32
 r_tol = 0.01
 boundaries = [-1, -1, -1, -1]
 # 108244
@@ -10,7 +10,7 @@ boundaries[UPPER] = 1.0
 boundaries[LOWER] = 1.0
 boundaries[LEFT] = 1.0
 boundaries[RIGHT] = 1.0
-w = best_w_value(n)
+w = 1.00
 
 data = solve_discrete_laplace_sor(n, r_tol, boundaries, w)
 
