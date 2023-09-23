@@ -1,6 +1,6 @@
 import unittest
 from main import solve_discrete_laplace_sor, UPPER, LOWER, LEFT, RIGHT
-from results.test_solve_discrete_laplace_sor import TEST_1_X_VALUE, TEST_1_X_BOUND
+from results.test_solve_discrete_laplace_sor import TEST_1_X_VALUE, TEST_1_X_ERROR_BOUND
 
 
 X = 0
@@ -25,12 +25,12 @@ class SolveDiscreteLaplaceSORTestCase(unittest.TestCase):
         data = solve_discrete_laplace_sor(n, r_tol, boundaries)
 
         x_value = data[X]
-        x_bound = data[X_UPPER_BOUND]
+        x_error_bound = data[X_UPPER_BOUND]
         residual = data[RESIDUAL]
         iterations = data[ITERATIONS]
 
         self.assertEqual(TEST_1_X_VALUE, x_value)
-        self.assertEqual(TEST_1_X_BOUND, x_bound)
+        self.assertEqual(TEST_1_X_ERROR_BOUND, x_error_bound)
         self.assertEqual(0.0007298476528922345, residual)
         self.assertEqual(14, iterations)
 
