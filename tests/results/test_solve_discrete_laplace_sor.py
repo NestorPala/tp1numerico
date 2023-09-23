@@ -1,4 +1,4 @@
-from tests.utils.round_x_values import round_x_values
+from tests.utils.map_x_values import round_x_values, ceiling_x_values
 from tests.utils.to_node_matrix import to_node_matrix
 
 
@@ -110,7 +110,7 @@ TEST_1_X_ERROR_BOUND = [
 n = 8
 digits = 1
 test_1_nodes = to_node_matrix(round_x_values(TEST_1_X_VALUE, digits), n)
-test_1_errors = to_node_matrix(round_x_values(TEST_1_X_ERROR_BOUND, digits), n)
+test_1_errors = to_node_matrix(ceiling_x_values(TEST_1_X_ERROR_BOUND, digits), n)
 
 
 """
@@ -125,12 +125,13 @@ test_1_nodes = [
 ]
 
 test_1_errors = [
-    [0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-    [0.0, 0.1, 0.1, 0.0, 0.0, 0.0, 0.0],
-    [0.0, 0.1, 0.1, 0.0, 0.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    [0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 
+    [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 
+    [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 
+    [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 
+    [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 
+    [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 
+    [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
 ]
+
 """

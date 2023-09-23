@@ -16,6 +16,8 @@ class SolveDiscreteLaplaceSORTestCase(unittest.TestCase):
         n = 8
         r_tol = 0.001
         boundaries = [-1, -1, -1, -1]
+
+        # 108244
         boundaries[UPPER] = 80.0
         boundaries[LOWER] = 20.0
         boundaries[LEFT] = 40.0
