@@ -10,14 +10,56 @@ class InternalValuesSumTestCase(unittest.TestCase):
         x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
         self.assertEqual(14.0, internal_values_sum(z, n, x1, x0))
 
-    def test_n_equal_to_4_and_z_in_middle(self):
+    def test_n_equal_to_4_and_z_equal_to_2(self):
+        z = 2
+        n = 4
+        x1 = [8.5]
+        x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+        self.assertEqual(20.5, internal_values_sum(z, n, x1, x0))
+
+    def test_n_equal_to_4_and_z_equal_to_3(self):
+        z = 3
+        n = 4
+        x1 = [8.5, 7.5]
+        x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+        self.assertEqual(11.5, internal_values_sum(z, n, x1, x0))
+
+    def test_n_equal_to_4_and_z_equal_to_4(self):
+        z = 4
+        n = 4
+        x1 = [8.5, 7.5, 6.5]
+        x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+        self.assertEqual(16.5, internal_values_sum(z, n, x1, x0))
+
+    def test_n_equal_to_4_and_z_equal_to_5(self):
+        z = 5
+        n = 4
+        x1 = [8.5, 7.5, 6.5, 5.5]
+        x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+        self.assertEqual(19.0, internal_values_sum(z, n, x1, x0))
+
+    def test_n_equal_to_4_and_z_equal_to_6(self):
         z = 6
         n = 4
         x1 = [8.5, 7.5, 6.5, 5.5, 4.5]
         x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
         self.assertEqual(12.0, internal_values_sum(z, n, x1, x0))
 
-    def test_n_equal_to_4_and_z_equal_to_last(self):
+    def test_n_equal_to_4_and_z_equal_to_7(self):
+        z = 7
+        n = 4
+        x1 = [8.5, 7.5, 6.5, 5.5, 4.5, 3.5]
+        x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+        self.assertEqual(7.5, internal_values_sum(z, n, x1, x0))
+
+    def test_n_equal_to_4_and_z_equal_to_8(self):
+        z = 8
+        n = 4
+        x1 = [8.5, 7.5, 6.5, 5.5, 4.5, 3.5, 2.5]
+        x0 = [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+        self.assertEqual(8.0, internal_values_sum(z, n, x1, x0))
+
+    def test_n_equal_to_4_and_z_equal_to_9(self):
         z = 9
         n = 4
         x1 = [8.5, 7.5, 6.5, 5.5, 4.5, 3.5, 2.5, 1.5]
