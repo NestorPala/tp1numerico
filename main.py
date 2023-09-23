@@ -1,9 +1,8 @@
-import numpy as np
-from numpy import cos, power, sin, add, subtract
+from numpy import cos, power, sin, add, subtract, array, pi
 from numpy.linalg import norm
 
 
-PI = np.pi
+PI = pi
 UPPER = 0
 LOWER = 1
 LEFT = 2
@@ -63,16 +62,16 @@ def sor(
 
 
 def residual(x1: list[float], x0: list[float]) -> float:
-    arr1 = np.array(x1)
-    arr0 = np.array(x0)
+    arr1 = array(x1)
+    arr0 = array(x0)
     return norm(add(arr1, arr0), 2) / norm(arr0, 2)
 
 
 # cota
-def error_bound(x1: list[float], x0: list[float]) -> float:
-    arr1 = np.array(x1)
-    arr0 = np.array(x0)
-    return np.abs(subtract(arr1, arr0))
+def error_bound(x1: list[float], x0: list[float]) -> list[float]:
+    arr1 = array(x1)
+    arr0 = array(x0)
+    return list(abs(subtract(arr1, arr0)))
 
 
 # frontera
