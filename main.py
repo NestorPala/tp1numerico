@@ -134,9 +134,9 @@ def internal_values_sum(
     total = 0.0
     for adj in internal_adjacents(z, n):
         if adj < z:
-            total += x1[adj]  # current iteration
+            total += x1[adj - 1]  # current iteration
         else:
-            total += x0[adj]  # last iteration
+            total += x0[adj - 1]  # last iteration
     return total
 
 
