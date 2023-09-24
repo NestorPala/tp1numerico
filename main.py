@@ -3,19 +3,27 @@ from numpy.linalg import norm
 
 
 PI = pi
-UPPER = 0
-LOWER = 1
-LEFT = 2
-RIGHT = 3
+
+# Boundaries list
+UPPER = 0  # TN
+LOWER = 1  # TS
+LEFT = 2  # TW
+RIGHT = 3  # TE
+
+# Results tuple
+X_VALUE = 0
+X_ERROR_BOUND = 1
+RESIDUAL = 2
+ITERATIONS = 3
 
 
-# boundaries: [UPPER, LOWER, LEFT, RIGHT]
+# Punto de entrada de la aplicación
 def solve_discrete_laplace_sor(
         n: int,
         r_tol: float,
-        boundaries: list[int],
+        boundaries: list[int],  # Contorno: [UPPER, LOWER, LEFT, RIGHT]
         w: float = -1,
-        seed: list[float] = None
+        seed: list[float] = None  # X(0)
 ) -> tuple[list[float], list[float], float, int]:
     # X(k + 1)
     x1 = list()
@@ -24,9 +32,9 @@ def solve_discrete_laplace_sor(
     if w == -1:
         w = best_w_value(n)
     delta_x = []
-    k = 1
+    k = 1  # iterations
     r = r_tol
-    max_z = power(n - 1, 2)
+    max_z = power(n - 1, 2)  # amount of internal nodes
     while r >= r_tol:
         for z in range(1, max_z + 1):  # internal nodes
             new_z_node_value = node_sor(z, n, x1, x0, w, boundaries)
@@ -53,12 +61,12 @@ def node_sor(
         w: float,
         boundaries: list[float]
 ) -> float:
-    b = boundary_values_sum(z, n, boundaries)
-    i = internal_values_sum(z, n, x1, x0)
-    adjacent_sum = b + i
-    z0_value = x0[z - 1]
-    z1_value = (adjacent_sum / 4 - z0_value) * w + z0_value
-    return z1_value
+    b = boundary_values_sum(z, n, boundaries)  # Temperaturas de los puntos del contorno
+    i = internal_values_sum(z, n, x1, x0)  # Temperaturas de los nodos internos
+    adjacent_sum = b + i   # Suma de todas las temperaturas adyacentes
+    z0_value = x0[z - 1]  # T(z, k)
+    z1_value = (adjacent_sum / 4 - z0_value) * w + z0_value  # SOR
+    return z1_value  # T(z, k+1)
 
 
 def residual(x1: list[float], x0: list[float]) -> float:
@@ -67,24 +75,21 @@ def residual(x1: list[float], x0: list[float]) -> float:
     return norm(subtract(arr1, arr0), 2) / norm(arr1, 2)
 
 
-# cota
 def error_bound(x1: list[float], x0: list[float]) -> list[float]:
     arr1 = array(x1)
     arr0 = array(x0)
     return list(abs(subtract(arr1, arr0)))
 
 
-# frontera
 def boundary_values_sum(
         z: int,
         n: int,
         boundaries: list[float]
 ) -> float:
-    i, j = matrix_index_from(z, n)
+    i, j = matrix_index_from(z, n)  # No generamos la matriz A, calculamos sus posiciones
     return b_value_from_matrix_index(i, j, n, boundaries)
 
 
-# calcular_valor_frontera
 def b_value_from_matrix_index(
         i: int,
         j: int,
@@ -124,7 +129,6 @@ def b_value_from_matrix_index(
     return 0.0
 
 
-# no_frontera
 def internal_values_sum(
         z: int,
         n: int,
@@ -140,7 +144,6 @@ def internal_values_sum(
     return total
 
 
-# adjacents
 def internal_adjacents(z: int, n: int) -> list[int]:
     adj = []
     i, j = matrix_index_from(z, n)
@@ -174,13 +177,13 @@ def z_index_from(i: int, j: int, n: int) -> int:
     return (n - 1) * j + i + 1
 
 
+def best_w_value(n: int) -> float:
+    return 2 / (1 + sin(PI / n))
+
+
 def spectral_radius_gs(n: int) -> float:
     return power(cos(PI / n), 2)
 
 
 def spectral_radius_sor(n: int) -> float:
     return best_w_value(n) - 1
-
-
-def best_w_value(n: int) -> float:
-    return 2 / (1 + sin(PI / n))
