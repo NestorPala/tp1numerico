@@ -10,7 +10,7 @@ boundaries[UPPER] = 1.0
 boundaries[LOWER] = 1.0
 boundaries[LEFT] = 1.0
 boundaries[RIGHT] = 1.0
-w = 1.00
+w = 1.95
 
 data = solve_discrete_laplace_sor(n, r_tol, boundaries, w)
 
@@ -19,8 +19,8 @@ x_error_bound = data[X_ERROR_BOUND]
 residual = data[RESIDUAL]
 iterations = data[ITERATIONS]
 
-print(x_value)
-print(x_error_bound)
-print(residual)
-print(iterations)
-print("w: " + str(w))
+w_str_decimals = '{:.2f}'.format(w)[2:4]
+print(f"TEST_N_32_W_1_{w_str_decimals}_X_VALUE =", x_value, "\n")
+print(f"TEST_N_32_W_1_{w_str_decimals}_X_ERROR_BOUND =", x_error_bound, "\n")
+print(f"TEST_N_32_W_1_{w_str_decimals}_RESIDUAL =", residual, "\n")
+print(f"TEST_N_32_W_1_{w_str_decimals}_ITERATIONS =", iterations, "\n")
