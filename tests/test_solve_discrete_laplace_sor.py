@@ -130,6 +130,24 @@ class SolveDiscreteLaplaceSORTestCase(unittest.TestCase):
 
         self.assertTrue(nodes_are_valid(x_values, x_errors, n, boundaries))
 
+    @skip('(n = 1024) Takes too long')
+    def test_n_equals_1024(self):
+        n = 1024
+        r_tol = 0.01
+        boundaries = [-1, -1, -1, -1]
+
+        boundaries[UPPER] = 1.0
+        boundaries[LOWER] = 1.0
+        boundaries[LEFT] = 1.0
+        boundaries[RIGHT] = 1.0
+
+        data = solve_discrete_laplace_sor(n, r_tol, boundaries)
+
+        x_values = data[X_VALUE]
+        x_errors = data[X_ERROR_BOUND]
+
+        self.assertTrue(nodes_are_valid(x_values, x_errors, n, boundaries))
+
 
 if __name__ == '__main__':
     unittest.main()
