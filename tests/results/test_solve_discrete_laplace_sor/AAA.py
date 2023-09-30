@@ -1,10 +1,11 @@
 from main import \
     solve_discrete_laplace_sor, \
     UPPER, LOWER, LEFT, RIGHT, \
-    X_VALUE, X_ERROR_BOUND, RESIDUAL, ITERATIONS
+    X_VALUE, X_ERROR_BOUND, RESIDUAL, ITERATIONS, best_w_value
 
-N = 32
 r_tol = 0.01  # tolerancia
+N = 32
+w = best_w_value(N)
 
 # Contorno de la placa
 boundaries = [-1, -1, -1, -1]
@@ -15,7 +16,7 @@ boundaries[RIGHT] = 1.0  # TE
 
 # Si no se especifica "w", por defecto se calcula el mejor valor
 # Si no se especifica "seed", por defecto se utiliza x0 = [0,0,...,0]
-data = solve_discrete_laplace_sor(N, r_tol, boundaries)
+data = solve_discrete_laplace_sor(N, r_tol, boundaries, w=w)
 
 T = data[X_VALUE]  # temperaturas en los nodos
 DELTA_T = data[X_ERROR_BOUND]  # cotas de error
