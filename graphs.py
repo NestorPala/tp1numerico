@@ -43,9 +43,9 @@ ax.set_yticklabels([str(i) for i in range(matrix.shape[0])])
 
 # Add a colorbar to show the mapping of values to colors
 cbar = plt.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), ax=ax)
-cbar.set_label('Temperature')
+cbar.set_label('Temperature (°C)')
 
 # Display the plot
-plt.title('Internal nodes in a motherboard')
+plt.title('Internal points/nodes in a motherboard')
 plt.grid(visible=True)
 plt.show()
