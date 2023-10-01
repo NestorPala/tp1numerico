@@ -243,88 +243,88 @@ def spectral_radius_sor(n: int) -> float:
 
 # RESULTS_1D_FOR_W_VALUE = {
 #     1.00: {
-#         "residual": TEST_N_32_W_1_00_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_00_RESIDUAL
+#         "residual": TEST_N_32_W_1_00_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_00_ITERATIONS
 #     },
 #     1.05: {
-#         "residual": TEST_N_32_W_1_05_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_05_RESIDUAL
+#         "residual": TEST_N_32_W_1_05_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_05_ITERATIONS
 #     },
 #     1.10: {
-#         "residual": TEST_N_32_W_1_10_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_10_RESIDUAL
+#         "residual": TEST_N_32_W_1_10_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_10_ITERATIONS
 #     },
 #     1.15: {
-#         "residual": TEST_N_32_W_1_15_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_15_RESIDUAL
+#         "residual": TEST_N_32_W_1_15_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_15_ITERATIONS
 #     },
 #     1.20: {
-#         "residual": TEST_N_32_W_1_20_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_20_RESIDUAL
+#         "residual": TEST_N_32_W_1_20_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_20_ITERATIONS
 #     },
 #     1.25: {
-#         "residual": TEST_N_32_W_1_25_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_25_RESIDUAL
+#         "residual": TEST_N_32_W_1_25_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_25_ITERATIONS
 #     },
 #     1.30: {
-#         "residual": TEST_N_32_W_1_30_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_30_RESIDUAL
+#         "residual": TEST_N_32_W_1_30_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_30_ITERATIONS
 #     },
 #     1.35: {
-#         "residual": TEST_N_32_W_1_35_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_35_RESIDUAL
+#         "residual": TEST_N_32_W_1_35_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_35_ITERATIONS
 #     },
 #     1.40: {
-#         "residual": TEST_N_32_W_1_40_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_40_RESIDUAL
+#         "residual": TEST_N_32_W_1_40_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_40_ITERATIONS
 #     },
 #     1.45: {
-#         "residual": TEST_N_32_W_1_45_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_45_RESIDUAL
+#         "residual": TEST_N_32_W_1_45_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_45_ITERATIONS
 #     },
 #     1.50: {
-#         "residual": TEST_N_32_W_1_50_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_50_RESIDUAL
+#         "residual": TEST_N_32_W_1_50_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_50_ITERATIONS
 #     },
 #     1.55: {
-#         "residual": TEST_N_32_W_1_55_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_55_RESIDUAL
+#         "residual": TEST_N_32_W_1_55_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_55_ITERATIONS
 #     },
 #     1.60: {
-#         "residual": TEST_N_32_W_1_60_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_60_RESIDUAL
+#         "residual": TEST_N_32_W_1_60_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_60_ITERATIONS
 #     },
 #     1.65: {
-#         "residual": TEST_N_32_W_1_65_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_65_RESIDUAL
+#         "residual": TEST_N_32_W_1_65_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_65_ITERATIONS
 #     },
 #     1.70: {
-#         "residual": TEST_N_32_W_1_70_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_70_RESIDUAL
+#         "residual": TEST_N_32_W_1_70_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_70_ITERATIONS
 #     },
 #     1.75: {
-#         "residual": TEST_N_32_W_1_75_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_75_RESIDUAL
+#         "residual": TEST_N_32_W_1_75_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_75_ITERATIONS
 #     },
 #     1.80: {
-#         "residual": TEST_N_32_W_1_80_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_80_RESIDUAL
+#         "residual": TEST_N_32_W_1_80_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_80_ITERATIONS
 #     },
 #     1.8214651907890225: {
-#         "residual": 28,
-#         "iterations": 0.009862712316656284
+#         "residual": 0.009862712316656284,
+#         "iterations": 28
 #     },
 #     1.85: {
-#         "residual": TEST_N_32_W_1_85_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_85_RESIDUAL
+#         "residual": TEST_N_32_W_1_85_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_85_ITERATIONS
 #     },
 #     1.90: {
-#         "residual": TEST_N_32_W_1_90_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_90_RESIDUAL
+#         "residual": TEST_N_32_W_1_90_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_90_ITERATIONS
 #     },
 #     1.95: {
-#         "residual": TEST_N_32_W_1_95_ITERATIONS,
-#         "iterations": TEST_N_32_W_1_95_RESIDUAL
+#         "residual": TEST_N_32_W_1_95_RESIDUAL,
+#         "iterations": TEST_N_32_W_1_95_ITERATIONS
 #     },
 # }
 #
@@ -333,4 +333,12 @@ def spectral_radius_sor(n: int) -> float:
 # specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
 #
 # for sr in specradius:
-#     print(str(round(log(sr), 3))[0:3] + "," + str(round(log(sr), 3))[4:7])
+#     #print(round(sr, 3))
+#     print(str(round(sr, 3))[0:1] + "," + str(round(sr, 3))[2:5])
+
+
+# 0.5000000000000001
+# print(spectral_radius_gs(4))
+
+# 0.9903926402016153
+# print(spectral_radius_gs(32))
