@@ -1,6 +1,7 @@
 from numpy import cos, power, sin, subtract, array, pi, log, log10
 from numpy.linalg import norm
 
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_C import RESULTS_1C_FOR_W_VALUE
 from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_00 import TEST_N_32_W_1_00_ITERATIONS, \
     TEST_N_32_W_1_00_RESIDUAL
 from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_05 import TEST_N_32_W_1_05_ITERATIONS, \
@@ -233,12 +234,12 @@ def spectral_radius_sor(n: int) -> float:
     return best_w_value(n) - 1
 
 
-# values = list(map(lambda key: [RESULTS_1C_FOR_W_VALUE[key]["residual"], RESULTS_1C_FOR_W_VALUE[key]["iterations"]], RESULTS_1C_FOR_W_VALUE))
-#
-# specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
-#
-# for sr in specradius:
-#     print(round(sr,3))
+values = list(map(lambda key: [RESULTS_1C_FOR_W_VALUE[key]["residual"], RESULTS_1C_FOR_W_VALUE[key]["iterations"]], RESULTS_1C_FOR_W_VALUE))
+
+specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
+
+for sr in specradius:
+    print(sr)
 
 
 # RESULTS_1D_FOR_W_VALUE = {
@@ -333,12 +334,10 @@ def spectral_radius_sor(n: int) -> float:
 # specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
 #
 # for sr in specradius:
-#     #print(round(sr, 3))
-#     print(str(round(sr, 3))[0:1] + "," + str(round(sr, 3))[2:5])
+#     print(sr)
+#     # print(str(round(sr, 3))[0:1] + "," + str(round(sr, 3))[2:5])
 
 
-# 0.5000000000000001
-# print(spectral_radius_gs(4))
-
-# 0.9903926402016153
-# print(spectral_radius_gs(32))
+print(spectral_radius_sor(4))
+#
+# print(spectral_radius_sor(32))
