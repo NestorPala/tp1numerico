@@ -40,14 +40,12 @@ ax.set_xticks(np.arange(matrix.shape[1]))
 ax.set_yticks(np.arange(matrix.shape[0]))
 ax.set_xticklabels([str(i) for i in range(matrix.shape[1])])
 ax.set_yticklabels([str(i) for i in range(matrix.shape[0])])
-ax.set_xlabel('Column')
-ax.set_ylabel('Row')
 
 # Add a colorbar to show the mapping of values to colors
 cbar = plt.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), ax=ax)
-cbar.set_label('Matrix Values')
+cbar.set_label('Temperature')
 
 # Display the plot
-plt.title('Squared Regions Colored by Sections')
+plt.title('Internal nodes in a motherboard')
 plt.grid(visible=True)
 plt.show()
