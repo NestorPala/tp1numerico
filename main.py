@@ -1,6 +1,46 @@
-from numpy import cos, power, sin, subtract, array, pi
+from numpy import cos, power, sin, subtract, array, pi, log, log10
 from numpy.linalg import norm
 
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_00 import TEST_N_32_W_1_00_ITERATIONS, \
+    TEST_N_32_W_1_00_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_05 import TEST_N_32_W_1_05_ITERATIONS, \
+    TEST_N_32_W_1_05_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_10 import TEST_N_32_W_1_10_ITERATIONS, \
+    TEST_N_32_W_1_10_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_15 import TEST_N_32_W_1_15_ITERATIONS, \
+    TEST_N_32_W_1_15_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_20 import TEST_N_32_W_1_20_ITERATIONS, \
+    TEST_N_32_W_1_20_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_25 import TEST_N_32_W_1_25_ITERATIONS, \
+    TEST_N_32_W_1_25_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_30 import TEST_N_32_W_1_30_ITERATIONS, \
+    TEST_N_32_W_1_30_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_35 import TEST_N_32_W_1_35_ITERATIONS, \
+    TEST_N_32_W_1_35_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_40 import TEST_N_32_W_1_40_ITERATIONS, \
+    TEST_N_32_W_1_40_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_45 import TEST_N_32_W_1_45_ITERATIONS, \
+    TEST_N_32_W_1_45_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_50 import TEST_N_32_W_1_50_ITERATIONS, \
+    TEST_N_32_W_1_50_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_55 import TEST_N_32_W_1_55_ITERATIONS, \
+    TEST_N_32_W_1_55_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_60 import TEST_N_32_W_1_60_ITERATIONS, \
+    TEST_N_32_W_1_60_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_65 import TEST_N_32_W_1_65_ITERATIONS, \
+    TEST_N_32_W_1_65_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_70 import TEST_N_32_W_1_70_ITERATIONS, \
+    TEST_N_32_W_1_70_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_75 import TEST_N_32_W_1_75_ITERATIONS, \
+    TEST_N_32_W_1_75_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_80 import TEST_N_32_W_1_80_ITERATIONS, \
+    TEST_N_32_W_1_80_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_85 import TEST_N_32_W_1_85_ITERATIONS, \
+    TEST_N_32_W_1_85_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_90 import TEST_N_32_W_1_90_ITERATIONS, \
+    TEST_N_32_W_1_90_RESIDUAL
+from tests.results.test_solve_discrete_laplace_sor.PARTE_1_D_.RES_1D_W_1_95 import TEST_N_32_W_1_95_ITERATIONS, \
+    TEST_N_32_W_1_95_RESIDUAL
 
 PI = pi
 
@@ -185,5 +225,112 @@ def spectral_radius_gs(n: int) -> float:
     return power(cos(PI / n), 2)
 
 
+def spectral_radius_gs_from_residual(r: float, k: int) -> float:
+    return r ** (1 / k)
+
+
 def spectral_radius_sor(n: int) -> float:
     return best_w_value(n) - 1
+
+
+# values = list(map(lambda key: [RESULTS_1C_FOR_W_VALUE[key]["residual"], RESULTS_1C_FOR_W_VALUE[key]["iterations"]], RESULTS_1C_FOR_W_VALUE))
+#
+# specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
+#
+# for sr in specradius:
+#     print(round(sr,3))
+
+
+# RESULTS_1D_FOR_W_VALUE = {
+#     1.00: {
+#         "residual": TEST_N_32_W_1_00_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_00_RESIDUAL
+#     },
+#     1.05: {
+#         "residual": TEST_N_32_W_1_05_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_05_RESIDUAL
+#     },
+#     1.10: {
+#         "residual": TEST_N_32_W_1_10_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_10_RESIDUAL
+#     },
+#     1.15: {
+#         "residual": TEST_N_32_W_1_15_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_15_RESIDUAL
+#     },
+#     1.20: {
+#         "residual": TEST_N_32_W_1_20_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_20_RESIDUAL
+#     },
+#     1.25: {
+#         "residual": TEST_N_32_W_1_25_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_25_RESIDUAL
+#     },
+#     1.30: {
+#         "residual": TEST_N_32_W_1_30_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_30_RESIDUAL
+#     },
+#     1.35: {
+#         "residual": TEST_N_32_W_1_35_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_35_RESIDUAL
+#     },
+#     1.40: {
+#         "residual": TEST_N_32_W_1_40_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_40_RESIDUAL
+#     },
+#     1.45: {
+#         "residual": TEST_N_32_W_1_45_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_45_RESIDUAL
+#     },
+#     1.50: {
+#         "residual": TEST_N_32_W_1_50_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_50_RESIDUAL
+#     },
+#     1.55: {
+#         "residual": TEST_N_32_W_1_55_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_55_RESIDUAL
+#     },
+#     1.60: {
+#         "residual": TEST_N_32_W_1_60_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_60_RESIDUAL
+#     },
+#     1.65: {
+#         "residual": TEST_N_32_W_1_65_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_65_RESIDUAL
+#     },
+#     1.70: {
+#         "residual": TEST_N_32_W_1_70_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_70_RESIDUAL
+#     },
+#     1.75: {
+#         "residual": TEST_N_32_W_1_75_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_75_RESIDUAL
+#     },
+#     1.80: {
+#         "residual": TEST_N_32_W_1_80_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_80_RESIDUAL
+#     },
+#     1.8214651907890225: {
+#         "residual": 28,
+#         "iterations": 0.009862712316656284
+#     },
+#     1.85: {
+#         "residual": TEST_N_32_W_1_85_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_85_RESIDUAL
+#     },
+#     1.90: {
+#         "residual": TEST_N_32_W_1_90_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_90_RESIDUAL
+#     },
+#     1.95: {
+#         "residual": TEST_N_32_W_1_95_ITERATIONS,
+#         "iterations": TEST_N_32_W_1_95_RESIDUAL
+#     },
+# }
+#
+# values = list(map(lambda key: [RESULTS_1D_FOR_W_VALUE[key]["residual"], RESULTS_1D_FOR_W_VALUE[key]["iterations"]], RESULTS_1D_FOR_W_VALUE))
+#
+# specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
+#
+# for sr in specradius:
+#     print(str(round(log(sr), 3))[0:3] + "," + str(round(log(sr), 3))[4:7])
