@@ -234,12 +234,12 @@ def spectral_radius_sor(n: int) -> float:
     return best_w_value(n) - 1
 
 
-values = list(map(lambda key: [RESULTS_1C_FOR_W_VALUE[key]["residual"], RESULTS_1C_FOR_W_VALUE[key]["iterations"]], RESULTS_1C_FOR_W_VALUE))
+# values = list(map(lambda key: [RESULTS_1C_FOR_W_VALUE[key]["residual"], RESULTS_1C_FOR_W_VALUE[key]["iterations"]], RESULTS_1C_FOR_W_VALUE))
+#
+# specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
 
-specradius = list(map(lambda value: spectral_radius_gs_from_residual(r=value[0],k=value[1]), values))
-
-for sr in specradius:
-    print(sr)
+# for sr in specradius:
+#     print(sr)
 
 
 # RESULTS_1D_FOR_W_VALUE = {
@@ -338,6 +338,6 @@ for sr in specradius:
 #     # print(str(round(sr, 3))[0:1] + "," + str(round(sr, 3))[2:5])
 
 
-print(spectral_radius_sor(4))
+# print(spectral_radius_sor(4))
 #
 # print(spectral_radius_sor(32))
